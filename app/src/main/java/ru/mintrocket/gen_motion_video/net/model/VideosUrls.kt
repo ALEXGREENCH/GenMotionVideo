@@ -1,8 +1,10 @@
 package ru.mintrocket.gen_motion_video.net.model
 
+import Results
+
 data class VideosUrls(
-    val src: String,
-    val single: String,
-    val split_v: String,
-    val split_h: String,
+    val a : String,
+    val task_id : Int,
+    val status : Int,
+    val results : Results
 )

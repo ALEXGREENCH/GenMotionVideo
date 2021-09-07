@@ -62,6 +62,8 @@ class MainActivity : AppCompatActivity() {
                 adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, listFragments)
                 registerOnPageChangeCallback(listenerChangePage)
             }
+            bottomNavigationView.setOnItemSelectedListener(listenerNavigationBar)
+
         }
     }
 }
