@@ -3,6 +3,7 @@ package ru.mintrocket.gen_motion_video.screens.video_original
 import android.os.Bundle
 import android.view.View
 import android.widget.MediaController
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mintrocket.gen_motion_video.R
@@ -29,7 +30,7 @@ class VideoOriginalFragment : BaseFragment(R.layout.fragment_video) {
 
         })
         viewModel.errorMsg.observe(viewLifecycleOwner, {
-
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
         viewModel.getUrlVideo(GetVideoOriginUrlUseCase())
     }

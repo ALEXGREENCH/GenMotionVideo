@@ -3,12 +3,12 @@ package ru.mintrocket.gen_motion_video.screens.video_split_horizontal
 import android.os.Bundle
 import android.view.View
 import android.widget.MediaController
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mintrocket.gen_motion_video.R
 import ru.mintrocket.gen_motion_video.databinding.FragmentVideoBinding
 import ru.mintrocket.gen_motion_video.screens.BaseFragment
-import ru.mintrocket.gen_motion_video.screens.video_original.VideoOriginViewModel
 import ru.mintrocket.gen_motion_video.use_case.GetVideoSplitHorizontalUseCase
 
 class VideoSplitHorizontalFragment(): BaseFragment(R.layout.fragment_video) {
@@ -30,7 +30,7 @@ class VideoSplitHorizontalFragment(): BaseFragment(R.layout.fragment_video) {
 
         })
         viewModel.errorMsg.observe(viewLifecycleOwner, {
-
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
         viewModel.getUrlVideo(GetVideoSplitHorizontalUseCase())
     }
