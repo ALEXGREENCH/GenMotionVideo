@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GenMotionVideo</string>
+    <string name="original_video">Orig</string>
+    <string name="generated_video">GenMotion</string>
+    <string name="split_horizontal_video">SplitHorizontal</string>
+    <string name="split_vertical_video">SplitVertical</string>
+</resources>

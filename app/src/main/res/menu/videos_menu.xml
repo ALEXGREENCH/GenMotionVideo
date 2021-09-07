@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_orig"
+        android:icon="@drawable/ic_baseline_video_library_24"
+        android:title="@string/original_video"/>
+    <item
+        android:id="@+id/nav_gen"
+        android:icon="@drawable/ic_baseline_auto_awesome_24"
+        android:title="@string/generated_video"/>
+    <item
+        android:id="@+id/nav_split_horizontal"
+        android:icon="@drawable/ic_baseline_horizontal_split_24"
+        android:title="@string/split_horizontal_video"/>
+    <item
+        android:id="@+id/nav_split_vertical"
+        android:icon="@drawable/ic_baseline_vertical_split_24"
+        android:title="@string/split_vertical_video"/>
+</menu>
