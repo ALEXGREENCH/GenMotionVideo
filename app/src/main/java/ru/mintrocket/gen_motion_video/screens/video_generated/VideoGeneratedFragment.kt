@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.MediaController
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mintrocket.gen_motion_video.R
@@ -34,5 +35,11 @@ class VideoGeneratedFragment : BaseFragment(R.layout.fragment_video) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
         viewModel.getUrlVideo(GetVideoGenUrlUseCase())
+    }
+
+    companion object{
+        val instance: VideoGeneratedFragment by lazy {
+            VideoGeneratedFragment()
+        }
     }
 }

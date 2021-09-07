@@ -11,7 +11,7 @@ class VideoSplitVerticalViewModel : ViewModel() {
     var errorMsg = MutableLiveData<String>()
 
     fun getUrlVideo(getVideoUrl: GetVideoUrl) {
-        if (urlOriginVideo.value != null) return
+        //if (urlOriginVideo.value != null) return
         getVideoUrl.execute(object : ResultGetUrl{
             override fun resultGetUrl(url: String) {
                 urlOriginVideo.postValue(url)

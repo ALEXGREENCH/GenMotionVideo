@@ -9,6 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mintrocket.gen_motion_video.R
 import ru.mintrocket.gen_motion_video.databinding.FragmentVideoBinding
 import ru.mintrocket.gen_motion_video.screens.BaseFragment
+import ru.mintrocket.gen_motion_video.screens.video_generated.VideoGeneratedFragment
 import ru.mintrocket.gen_motion_video.screens.video_original.VideoOriginViewModel
 import ru.mintrocket.gen_motion_video.use_case.GetVideoSplitVerticalUseCase
 
@@ -34,5 +35,11 @@ class VideoSplitVerticalFragment: BaseFragment(R.layout.fragment_video) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
         viewModel.getUrlVideo(GetVideoSplitVerticalUseCase())
+    }
+
+    companion object{
+        val instance: VideoSplitVerticalFragment by lazy {
+            VideoSplitVerticalFragment()
+        }
     }
 }

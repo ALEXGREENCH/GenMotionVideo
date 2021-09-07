@@ -11,7 +11,6 @@ class VideoOriginViewModel : ViewModel() {
     var errorMsg = MutableLiveData<String>()
 
     fun getUrlVideo(getVideoUrl: GetVideoUrl) {
-        if (urlOriginVideo.value != null) return
         getVideoUrl.execute(object : ResultGetUrl{
             override fun resultGetUrl(url: String) {
                 urlOriginVideo.postValue(url)

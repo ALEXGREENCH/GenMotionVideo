@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.navigation.NavigationBarView
+import okhttp3.internal.Internal.instance
 import ru.mintrocket.gen_motion_video.*
 import ru.mintrocket.gen_motion_video.databinding.ActivityMainBinding
 import ru.mintrocket.gen_motion_video.screens.video_generated.VideoGeneratedFragment
 import ru.mintrocket.gen_motion_video.screens.video_original.VideoOriginalFragment
 import ru.mintrocket.gen_motion_video.screens.video_split_horizontal.VideoSplitHorizontalFragment
 import ru.mintrocket.gen_motion_video.screens.video_vertical.VideoSplitVerticalFragment
+import java.lang.IllegalArgumentException
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,8 +44,22 @@ class MainActivity : AppCompatActivity() {
     private val listenerChangePage = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
-            //val menu = binding.bottomNavigation.menu
-            //checkedMenuNavigationBar(menu)
+            val menu = binding.bottomNavigationView.menu
+            menu.findItem(when(position){
+                0 -> {
+                    R.id.nav_orig
+                }
+                1 -> {
+                    R.id.nav_gen
+                }
+                2 -> {
+                    R.id.nav_split_horizontal
+                }
+                3 -> {
+                    R.id.nav_split_vertical
+                }
+                else -> throw IllegalArgumentException("?")
+            }).isChecked = true
         }
     }
 
@@ -53,17 +69,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             viewPager.apply {
-                val listFragments = arrayListOf<Fragment>()
-                listFragments.add(VideoOriginalFragment())
-                listFragments.add(VideoGeneratedFragment())
-                listFragments.add(VideoSplitHorizontalFragment())
-                listFragments.add(VideoSplitVerticalFragment())
-
-                adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, listFragments)
+                adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, arrayListOf<Fragment>().apply {
+                    add(VideoOriginalFragment.instance)
+                    add(VideoGeneratedFragment.instance)
+                    add(VideoSplitHorizontalFragment.instance)
+                    add(VideoSplitVerticalFragment.instance)
+                })
                 registerOnPageChangeCallback(listenerChangePage)
+                offscreenPageLimit = 1
             }
             bottomNavigationView.setOnItemSelectedListener(listenerNavigationBar)
-
         }
     }
 }
